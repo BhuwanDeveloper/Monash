@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory - Monash Medical Centre</title>
+    <link rel="stylesheet" href="./src/css/inventory.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="home.html"><img src="./img/logo.webp" alt="Monash Medical Centre Logo" height="100px"
+                width="100px"></a>
+        <h1>Inventory Management - Monash Medical Centre</h1>
+        <div class="search-bar">
+            <input type="text" id="search" placeholder="Search inventory..." onkeyup="filterTable()">
+        </div>
+        <table id="inventory-table">
+            <thead>
+                <tr>
+                    <th>Item ID</th>
+                    <th>Item Name</th>
+                    <th>Quantity</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Example data; replace with dynamic content as needed -->
+                <tr>
+                    <td>001</td>
+                    <td>Bandages</td>
+                    <td>120</td>
+                    <td class="status">In Stock</td>
+                </tr>
+                <tr>
+                    <td>002</td>
+                    <td>Syringes</td>
+                    <td>50</td>
+                    <td class="status">Low Stock</td>
+                </tr>
+                <tr>
+                    <td>003</td>
+                    <td>Face Masks</td>
+                    <td>200</td>
+                    <td class="status">In Stock</td>
+                </tr>
+                <tr>
+                    <td>004</td>
+                    <td>Gloves</td>
+                    <td>0</td>
+                    <td class="status">Out of Stock</td>
+                </tr>
+                <!-- Add more rows as necessary -->
+            </tbody>
+        </table>
+    </div>
+
+    <script>
+        function filterTable() {
+            var input, filter, table, tr, td, i, j, txtValue;
+            input = document.getElementById('search');
+            filter = input.value.toUpperCase();
+            table = document.getElementById('inventory-table');
+            tr = table.getElementsByTagName('tr');
+
+            // Loop through all table rows, and hide those who don't match the search query
+            for (i = 1; i < tr.length; i++) {
+                tr[i].style.display = 'none';
+                td = tr[i].getElementsByTagName('td');
+                for (j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        txtValue = td[j].textContent || td[j].innerText;
+                        if (txtValue.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = '';
+                            break;
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

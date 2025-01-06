@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment Page</title>
+    <link rel="stylesheet" href="./src/css/appointment.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <a href="home.html"><img src="./img/logo.webp" alt="Monash Medical Centre Logo" height="100px"
+                width="100px"></a>
+        <h1>Appointment Page</h1>
+        <div class="form-container" id="form-container">
+            <form onsubmit="handleSubmit(event)">
+                <div>
+                    <label for="patient-name">Patient Name:</label>
+                    <input type="text" id="patient-name" name="patient-name" required>
+                </div>
+                <div>
+                    <label for="doctor-name">Doctor Name:</label>
+                    <input type="text" id="doctor-name" name="doctor-name" required>
+                </div>
+                <div>
+                    <label for="appointment-date">Date:</label>
+                    <input type="date" id="appointment-date" name="appointment-date" required>
+                </div>
+                <div>
+                    <label for="appointment-time">Time:</label>
+                    <input type="time" id="appointment-time" name="appointment-time" required>
+                </div>
+                <div>
+                    <label for="appointment-location">Location:</label>
+                    <input type="text" id="appointment-location" name="appointment-location" required>
+                </div>
+                <div>
+                    <input type="submit" value="Add Appointment">
+                </div>
+            </form>
+        </div>
+        <div class="confirmation-container" id="confirmation-container">
+            <div class="tick-symbol">&#10004;</div>
+            <h2>Your appointment has been booked!</h2>
+            <p><strong>Patient Name:</strong> <span id="confirm-patient-name"></span></p>
+            <p><strong>Doctor Name:</strong> <span id="confirm-doctor-name"></span></p>
+            <p><strong>Date:</strong> <span id="confirm-appointment-date"></span></p>
+            <p><strong>Time:</strong> <span id="confirm-appointment-time"></span></p>
+            <p><strong>Location:</strong> <span id="confirm-appointment-location"></span></p>
+        </div>
+    </div>
+    <script>
+        function handleSubmit(event) {
+            event.preventDefault();
+
+            // Get form values
+            var patientName = document.getElementById('patient-name').value;
+            var doctorName = document.getElementById('doctor-name').value;
+            var appointmentDate = document.getElementById('appointment-date').value;
+            var appointmentTime = document.getElementById('appointment-time').value;
+            var appointmentLocation = document.getElementById('appointment-location').value;
+
+            // Set confirmation text
+            document.getElementById('confirm-patient-name').innerText = patientName;
+            document.getElementById('confirm-doctor-name').innerText = doctorName;
+            document.getElementById('confirm-appointment-date').innerText = appointmentDate;
+            document.getElementById('confirm-appointment-time').innerText = appointmentTime;
+            document.getElementById('confirm-appointment-location').innerText = appointmentLocation;
+
+            // Show confirmation and hide form
+            document.getElementById('form-container').style.display = 'none';
+            document.getElementById('confirmation-container').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

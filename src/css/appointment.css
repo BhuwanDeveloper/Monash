@@ -1,0 +1,65 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://wallpaperaccess.com/full/4113244.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+.container {
+    max-width: 400px;
+    width: 100%;
+}
+h1 {
+    margin-bottom: 20px;
+}
+.form-container, .confirmation-container {
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    color: #333;
+}
+.confirmation-container {
+    display: none;
+}
+form div {
+    margin-bottom: 15px;
+    text-align: left;
+}
+form label {
+    display: block;
+    margin-bottom: 5px;
+}
+form input[type="text"],
+form input[type="date"],
+form input[type="time"] {
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+form input[type="submit"] {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+form input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+.confirmation-container .tick-symbol {
+    font-size: 50px;
+    color: green;
+    margin-bottom: 20px;
+}

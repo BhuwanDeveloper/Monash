@@ -1,0 +1,42 @@
+body {
+    font-family: Arial, sans-serif;
+    background: url('https://wallpaperaccess.com/full/4113244.jpg') no-repeat center center fixed;
+    background-size: cover;
+    margin: 0;
+    padding: 20px;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+}
+.container {
+    max-width: 600px;
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.9);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    color: #333;
+}
+h1 {
+    margin-bottom: 20px;
+}
+img {
+    max-width: 100px;
+    margin-bottom: 20px;
+}
+nav {
+    margin-top: 20px;
+}
+nav a {
+    margin: 0 10px;
+    text-decoration: none;
+    color: #007bff;
+    font-size: 16px;
+}
+nav a:hover {
+    text-decoration: underline;
+}

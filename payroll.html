@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payroll - Monash Medical Centre</title>
+    <link rel="stylesheet" href="./src/css/payroll.css">
+</head>
+
+<body>
+    <div class="container">
+        <a href="home.html"><img src="./img/logo.webp" alt="Monash Medical Centre Logo" height="100px"
+                width="100px"></a>
+        <h1>Payroll</h1>
+        <form id="payroll-form" onsubmit="calculatePay(event)">
+            <div>
+                <label for="employee-name">Employee Name:</label>
+                <input type="text" id="employee-name" name="employee-name" required>
+            </div>
+            <div>
+                <label for="employee-id">Employee ID:</label>
+                <input type="text" id="employee-id" name="employee-id" required>
+            </div>
+            <div>
+                <label for="weekday-hours">Weekday Hours Worked:</label>
+                <input type="number" id="weekday-hours" name="weekday-hours" step="0.1" required>
+            </div>
+            <div>
+                <label for="weekend-hours">Weekend Hours Worked:</label>
+                <input type="number" id="weekend-hours" name="weekend-hours" step="0.1" required>
+            </div>
+            <div>
+                <label for="hourly-rate">Hourly Rate ($):</label>
+                <input type="number" id="hourly-rate" name="hourly-rate" step="0.01" required>
+            </div>
+            <div>
+                <input type="submit" value="Calculate Pay">
+            </div>
+        </form>
+        <div class="summary" id="summary">
+            <h2>Pay Summary</h2>
+            <table>
+                <tr>
+                    <th>Employee Name</th>
+                    <td id="summary-employee-name"></td>
+                </tr>
+                <tr>
+                    <th>Employee ID</th>
+                    <td id="summary-employee-id"></td>
+                </tr>
+                <tr>
+                    <th>Hourly Rate</th>
+                    <td>$<span id="summary-hourly-rate"></span></td>
+                </tr>
+                <tr>
+                    <th>Weekday Hours Worked</th>
+                    <td><span id="summary-weekday-hours"></span></td>
+                </tr>
+                <tr>
+                    <th>Weekend Hours Worked</th>
+                    <td><span id="summary-weekend-hours"></span></td>
+                </tr>
+                <tr>
+                    <th>Total Gross Pay</th>
+                    <td>$<span id="summary-total-gross-pay"></span></td>
+                </tr>
+                <tr>
+                    <th>Tax Deducted</th>
+                    <td>$<span id="summary-tax-deducted"></span></td>
+                </tr>
+                <tr>
+                    <th>Superannuation</th>
+                    <td>$<span id="summary-superannuation"></span></td>
+                </tr>
+                <tr>
+                    <th>Total Net Pay</th>
+                    <td>$<span id="summary-total-net-pay"></span></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <script>
+        function calculatePay(event) {
+            event.preventDefault();
+
+            // Get form values
+            var employeeName = document.getElementById('employee-name').value;
+            var employeeId = document.getElementById('employee-id').value;
+            var weekdayHours = parseFloat(document.getElementById('weekday-hours').value);
+            var weekendHours = parseFloat(document.getElementById('weekend-hours').value);
+            var hourlyRate = parseFloat(document.getElementById('hourly-rate').value);
+
+            // Calculate pay
+            var weekdayPay = weekdayHours * hourlyRate;
+            var weekendPay = weekendHours * hourlyRate * 1.5; // Assuming weekend rate is 1.5 times
+            var totalGrossPay = weekdayPay + weekendPay;
+            var taxDeducted = totalGrossPay * 0.2; // Assuming 20% tax rate
+            var superannuation = totalGrossPay * 0.095; // Assuming 9.5% superannuation rate
+            var totalNetPay = totalGrossPay - taxDeducted;
+
+            // Set summary text
+            document.getElementById('summary-employee-name').innerText = employeeName;
+            document.getElementById('summary-employee-id').innerText = employeeId;
+            document.getElementById('summary-hourly-rate').innerText = hourlyRate.toFixed(2);
+            document.getElementById('summary-weekday-hours').innerText = weekdayHours.toFixed(1);
+            document.getElementById('summary-weekend-hours').innerText = weekendHours.toFixed(1);
+            document.getElementById('summary-total-gross-pay').innerText = totalGrossPay.toFixed(2);
+            document.getElementById('summary-tax-deducted').innerText = taxDeducted.toFixed(2);
+            document.getElementById('summary-superannuation').innerText = superannuation.toFixed(2);
+            document.getElementById('summary-total-net-pay').innerText = totalNetPay.toFixed(2);
+
+            // Show summary
+            document.getElementById('summary').style.display = 'block';
+        }
+    </script>
+</body>
+
+</html>

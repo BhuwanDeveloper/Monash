@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Portal</title>
+    <link rel="stylesheet" href="./src/css/style.css">
+</head>
+
+<body>
+    <a href="home.html"><img src="./img/logo.webp" alt="Monash Medical Centre Logo" height="100px" width="100px"></a>
+    <h1>Patient Portal</h1>
+    <div class="button-container">
+        <button onclick="showForm('new-patient-form')">New Patient</button>
+        <button onclick="showForm('existing-patient-form')">Existing Patient</button>
+    </div>
+    <div id="new-patient-form" class="form-container">
+        <form onsubmit="redirectToAppointment(event)">
+            <h2>Register</h2>
+            <div>
+                <label for="new-patient-first-name">First Name:</label>
+                <input type="text" id="new-patient-first-name" name="first-name" required>
+            </div>
+            <div>
+                <label for="new-patient-last-name">Last Name:</label>
+                <input type="text" id="new-patient-last-name" name="last-name" required>
+            </div>
+            <div>
+                <label for="new-patient-address">Address:</label>
+                <input type="text" id="new-patient-address" name="address" required>
+            </div>
+            <div>
+                <label for="new-patient-email">Email:</label>
+                <input type="email" id="new-patient-email" name="email" required>
+            </div>
+            <div>
+                <label for="new-patient-phone">Phone Number:</label>
+                <input type="tel" id="new-patient-phone" name="phone" required>
+            </div>
+            <div>
+                <label for="new-patient-dob">Date of Birth:</label>
+                <input type="date" id="new-patient-dob" name="dob" required>
+            </div>
+            <div>
+                <label for="new-patient-sex">Sex:</label>
+                <select id="new-patient-sex" name="sex" required>
+                    <option value="">Select</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div>
+                <label for="new-patient-nationality">Nationality:</label>
+                <input type="text" id="new-patient-nationality" name="nationality" required>
+            </div>
+            <div>
+                <input type="submit" value="Register">
+            </div>
+        </form>
+    </div>
+    <div id="existing-patient-form" class="form-container">
+        <form onsubmit="redirectToAppointment(event)">
+            <h2>Patient Details</h2>
+            <div>
+                <label for="existing-patient-id">Patient Full name:</label>
+                <input type="text" id="existing-patient-id" name="patient-id" required>
+            </div>
+            <div>
+                <label for="date">DOB</label>
+                <input type="date" id="date" name="date" required>
+            </div>
+            <div>
+                <input type="submit" value="confirm">
+            </div>
+        </form>
+    </div>
+    <script>
+        function showForm(formId) {
+            var forms = document.getElementsByClassName('form-container');
+            for (var i = 0; i < forms.length; i++) {
+                forms[i].classList.remove('active');
+            }
+            document.getElementById(formId).classList.add('active');
+        }
+
+        function redirectToAppointment(event) {
+            event.preventDefault();
+            window.location.href = 'appointment.html';
+        }
+    </script>
+</body>
+
+</html>
